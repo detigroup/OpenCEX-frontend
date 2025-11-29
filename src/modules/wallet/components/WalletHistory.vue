@@ -202,7 +202,7 @@ export default {
       default: null,
     },
     updateTable: {
-      type: Object,
+      type: Function,
       default: null,
     },
     wallethistory: {

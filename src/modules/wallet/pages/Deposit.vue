@@ -173,6 +173,7 @@ export default {
     deep: true,
   },
   mounted() {
+    this.getWalletHistoryFromAPI(this.curPage, this.amountOnPage);
     if (localStorage.getItem("showDepositNoticeModal")) {
       this.showDepositNoticeModal();
       localStorage.removeItem("showDepositNoticeModal");
@@ -349,6 +350,7 @@ export default {
       return a.toLocaleString("ru-RU");
     },
     updateTable() {
+      this.getWalletHistoryFromAPI(this.curPage, this.amountOnPage);
       this.getWalletHistory(this.curPage, this.amountOnPage, true);
       if (this.reconnectError) {
         this.updateWalletHistory(this.curPage);
@@ -404,6 +406,14 @@ export default {
           true
         );
       }
+    },
+    getWalletHistoryFromAPI(page, limit) {
+      let offset = limit * (page - 1);
+      this.$store.dispatch("core/getWalletTopupsHistory", {
+        limit,
+        offset,
+        page,
+      });
     },
     unsubscribeWsData() {
       this.sendSocketMessage("del_balance", {}, false, true);

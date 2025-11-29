@@ -197,8 +197,8 @@ export default {
         let ans = txs;
         commit(mutationTypes.WALLETTOPUPSHISTORY, {
           currentPage: historyData["page"],
-          totalPages: ans.count / historyData["limit"],
-          list: ans.results,
+          totalPages: ans.data.count / historyData["limit"],
+          list: ans.data.results,
         });
 
         if (callback) {
@@ -219,8 +219,8 @@ export default {
         let ans = txs;
         commit(mutationTypes.WALLETWITHDRAWALSHISTORY, {
           currentPage: historyData["page"],
-          totalPages: ans.count / historyData["limit"],
-          list: ans.results,
+          totalPages: ans.data.count / historyData["limit"],
+          list: ans.data.results,
         });
 
         if (callback) {
@@ -241,8 +241,8 @@ export default {
         let ans = txs;
         commit(mutationTypes.WALLETTICKERHISTORY, {
           currentPage: historyData["page"],
-          totalPages: ans.count / historyData["limit"],
-          list: ans.results,
+          totalPages: ans.data.count / historyData["limit"],
+          list: ans.data.results,
         });
 
         if (callback) {

@@ -99,6 +99,7 @@ export default {
     },
   },
   mounted() {
+    this.getWalletHistoryFromAPI(this.curPage, this.amountOnPage);
     this.$store.dispatch("core/getUserNotifications");
     if (this.isConnectedSocket) {
       if (localStorage.getItem("token")) {
@@ -157,7 +158,7 @@ export default {
       return a.toLocaleString("ru-RU");
     },
     updateTable() {
-      this.getWalletHistory(this.curPage, this.amountOnPage, true);
+      this.getWalletHistoryFromAPI(this.curPage, this.amountOnPage, true);
       if (this.reconnectError) {
         this.updateWalletHistory(this.curPage);
       }
@@ -204,6 +205,14 @@ export default {
           true
         );
       }
+    },
+    getWalletHistoryFromAPI(page, limit) {
+      let offset = limit * (page - 1);
+      this.$store.dispatch("core/getWalletTickerHistory", {
+        limit,
+        offset,
+        page,
+      });
     },
     unsubscribeWsData() {
       this.sendSocketMessage(
