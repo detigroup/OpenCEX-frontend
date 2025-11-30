@@ -9,7 +9,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     environment: develop
-
     steps:
       - name: Run deploy commands on server
         if: github.ref_name == 'develop'
@@ -21,7 +20,8 @@ jobs:
           key: ${{ vars.SSH_KEY }}
           script: |
             cd /app/opencex/frontend/
+            git checkout develop
             git pull
-            docker build -t frontend -f deploy/Dockerfile .
+            sudo docker build -t frontend -f deploy/Dockerfile .
             cd /app/opencex/
-            docker compose up -d --force-recreate frontend
+            sudo docker compose up -d --force-recreate frontend
