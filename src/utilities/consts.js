@@ -25,3 +25,6 @@ export const TRADING_VOLUME = [
     taker: 0.1,
   },
 ];
+
+export const WALL_OPERATION_TYPE_DEPOSIT = 1;
+export const WALL_OPERATION_TYPE_WITHDRAWAL = 2;

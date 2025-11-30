@@ -20,6 +20,7 @@ import { PaymentInfo } from "~/api/payment_info";
 import { Profile } from "~/api/profile";
 import { PaymentList } from "~/api/payment_list";
 import { Notifications } from "~/api/notifications";
+import * as consts from "~/utilities/consts";
 
 let refreshTokenPromise = null;
 
@@ -192,20 +193,20 @@ export default {
       delete historyData["fc"];
     }
 
-    WalletHistory.list(historyData["limit"], historyData["offset"]).then(
-      (txs) => {
-        let ans = txs;
-        commit(mutationTypes.WALLETTOPUPSHISTORY, {
-          currentPage: historyData["page"],
-          totalPages: ans.data.count / historyData["limit"],
-          list: ans.data.results,
-        });
+    WalletHistory.list(historyData["limit"], historyData["offset"], {
+      operation_type: consts.WALL_OPERATION_TYPE_DEPOSIT,
+    }).then((txs) => {
+      let ans = txs;
+      commit(mutationTypes.WALLETTOPUPSHISTORY, {
+        currentPage: historyData["page"],
+        totalPages: ans.data.count / historyData["limit"],
+        list: ans.data.results,
+      });
 
-        if (callback) {
-          callback(ans, historyData["page"] + 1);
-        }
+      if (callback) {
+        callback(ans, historyData["page"] + 1);
       }
-    );
+    });
   },
   getWalletWithdrawalHistory({ commit }, historyData) {
     let callback = false;
@@ -214,20 +215,20 @@ export default {
       delete historyData["fc"];
     }
 
-    WalletHistory.list(historyData["limit"], historyData["offset"]).then(
-      (txs) => {
-        let ans = txs;
-        commit(mutationTypes.WALLETWITHDRAWALSHISTORY, {
-          currentPage: historyData["page"],
-          totalPages: ans.data.count / historyData["limit"],
-          list: ans.data.results,
-        });
+    WalletHistory.list(historyData["limit"], historyData["offset"], {
+      operation_type: consts.WALL_OPERATION_TYPE_WITHDRAWAL,
+    }).then((txs) => {
+      let ans = txs;
+      commit(mutationTypes.WALLETWITHDRAWALSHISTORY, {
+        currentPage: historyData["page"],
+        totalPages: ans.data.count / historyData["limit"],
+        list: ans.data.results,
+      });
 
-        if (callback) {
-          callback(ans, historyData["page"] + 1);
-        }
+      if (callback) {
+        callback(ans, historyData["page"] + 1);
       }
-    );
+    });
   },
   getWalletTickerHistory({ commit }, historyData) {
     let callback = false;
