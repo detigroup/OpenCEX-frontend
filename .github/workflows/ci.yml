@@ -2,9 +2,9 @@ name: Deploy develop via SSH
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main, master, develop ]
   pull_request:
-    branches: [ main, develop ]
+    branches: [ main, master, develop ]
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -12,6 +12,7 @@ jobs:
 
     steps:
       - name: Run deploy commands on server
+        if: github.ref_name == 'develop'
         uses: appleboy/ssh-action@v1
         with:
           host: ${{ vars.SSH_HOST }}
