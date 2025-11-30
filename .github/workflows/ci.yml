@@ -11,6 +11,7 @@ jobs:
     environment: develop
     steps:
       - name: Run deploy commands on server
+        if: github.ref_name == 'develop'
         uses: appleboy/ssh-action@v1
         with:
           host: ${{ vars.SSH_HOST }}
