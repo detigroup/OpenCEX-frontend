@@ -2,20 +2,15 @@ name: Deploy develop via SSH
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main, master, develop ]
   pull_request:
-    branches: [ main, develop ]
+    branches: [ main, master, develop ]
 jobs:
   deploy:
     runs-on: ubuntu-latest
     environment: develop
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-
       - name: Run deploy commands on server
         uses: appleboy/ssh-action@v1
         with:
