@@ -21,6 +21,6 @@ jobs:
           script: |
             cd /app/opencex/frontend/
             git pull
-            suod docker build -t frontend -f deploy/Dockerfile .
+            sudo docker build -t frontend -f deploy/Dockerfile .
             cd /app/opencex/
             sudo docker compose up -d --force-recreate frontend
