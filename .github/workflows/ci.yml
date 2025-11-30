@@ -6,10 +6,6 @@ on:
   pull_request:
     branches: [ main, master, develop ]
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    environment: develop
-
     steps:
       - name: Run deploy commands on server
         uses: appleboy/ssh-action@v1
@@ -20,6 +16,7 @@ jobs:
           key: ${{ vars.SSH_KEY }}
           script: |
             cd /app/opencex/frontend/
+            git checkout develop
             git pull
             sudo docker build -t frontend -f deploy/Dockerfile .
             cd /app/opencex/
