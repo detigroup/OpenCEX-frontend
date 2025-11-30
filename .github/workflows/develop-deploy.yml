@@ -1,0 +1,29 @@
+name: Deploy develop via SSH
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: develop
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run deploy commands on server
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ vars.SSH_HOST }}
+          username: ${{ vars.SSH_USER }}
+          port: ${{ vars.SSH_PORT }}
+          key: ${{ vars.SSH_KEY }}
+          script: |
+            cd /app/opencex/frontend/
+            git pull
+            docker build -t frontend -f deploy/Dockerfile .
+            cd /app/opencex/
+            docker compose up -d --force-recreate frontend
