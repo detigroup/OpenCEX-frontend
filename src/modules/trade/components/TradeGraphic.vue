@@ -100,12 +100,13 @@ export default {
       this.datafeed = getDatafeed(this.precision);
       const intervalFromLocalStorage =
           localStorage.getItem("chart_interval") || "5",
+        tvLocale = this.lang === "vn" ? "vi" : this.lang,
         tvWidget = new widget({
           symbol: this.baseCurrency + "/" + this.quoteCurrency,
           interval: intervalFromLocalStorage,
           timezone: "Etc/UTC",
           container: this.$refs.graphic,
-          locale: this.lang,
+          locale: tvLocale,
           datafeed: this.datafeed,
           library_path: "/public/TV/charting_library/",
           autosize: true,
