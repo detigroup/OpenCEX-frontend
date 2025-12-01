@@ -5,7 +5,7 @@ const PaySystems = {
 };
 
 export default {
-  supportedLanguages: ["en", "ru"],
+  supportedLanguages: ["en", "ru", "vn"],
   defaultLanguage: "ru",
   currentWithdrawCardPaySystem: PaySystems.cauri,
   currentTopUpCardPaySystem: PaySystems.cauri,
