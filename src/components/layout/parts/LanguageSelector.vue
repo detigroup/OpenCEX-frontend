@@ -9,6 +9,7 @@
           'icn-lang-es': selectedLang === 'es',
           'icn-lang-fr': selectedLang === 'fr',
           'icn-lang-vn': selectedLang === 'vn',
+          'icn-lang-ar': selectedLang === 'ar',
         }"
       >
       </i>

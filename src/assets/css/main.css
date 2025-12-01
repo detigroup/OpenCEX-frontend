@@ -2699,6 +2699,10 @@ input[type="number"]::-webkit-outer-spin-button {
   background: url(/public/img/lang/vn_circle.png) 100% 100% no-repeat;
 }
 
+.icn-lang-ar {
+  background: url(/public/img/lang/ar_circle.png) 100% 100% no-repeat;
+}
+
 .btn-disable {
   cursor: not-allowed;
   pointer-events: none;
