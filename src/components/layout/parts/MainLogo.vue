@@ -1,7 +1,11 @@
 <template>
   <a class="logo" @click="goMain">
     <img
-      :src="localConfig.logo ? localConfig.logo : '/public/img/logo_big.png'"
+      :src="
+        localConfig.logo
+          ? localConfig.logo
+          : '/public/img/logo-svg-detihold.svg'
+      "
     />
   </a>
 </template>

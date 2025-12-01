@@ -15,7 +15,9 @@
         <img
           width="135"
           :src="
-            localConfig.logo ? localConfig.logo : '/public/img/logo-white.svg'
+            localConfig.logo
+              ? localConfig.logo
+              : '/public/img/logo-svg-detihold.svg'
           "
         />
       </a>

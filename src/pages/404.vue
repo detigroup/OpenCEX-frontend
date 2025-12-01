@@ -7,7 +7,9 @@
             width="200"
             class="error__logo"
             :src="
-              localConfig.logo ? localConfig.logo : '/public/img/logo-white.svg'
+              localConfig.logo
+                ? localConfig.logo
+                : '/public/img/logo-svg-detihold.svg'
             "
         /></router-link>
       </div>
