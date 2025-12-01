@@ -33,6 +33,23 @@ const fees = {
     mindepositalert:
       "Warning! Balance top-up at 1 transaction less than the minimum deposit amount will not be deposited.",
   },
+  vn: {
+    fees: "Phí",
+    first_table_taker: "Người khớp lệnh",
+    first_table_maker: "Người tạo lệnh",
+    first_table_volume: "Khối lượng giao dịch",
+    first_table_header: "Các mức phí giao dịch",
+    second_table_header: "Phí nạp và rút tiền",
+    third_table_1c: "Số tiền tối đa",
+    third_table_min: "Số tiền tối thiểu",
+    third_table_header: "Giới hạn lệnh",
+    second_table_currency: "Tiền tệ",
+    second_table_min_deposit: "Số tiền nạp tối thiểu",
+    second_table_max_deposit: "Số tiền nạp tối đa",
+    second_table_w_limits: "Giới hạn rút tiền",
+    mindepositalert:
+      "Cảnh báo! Số tiền nạp trong một giao dịch nhỏ hơn mức nạp tối thiểu sẽ không được ghi có.",
+  },
 };
 
 export default fees;
