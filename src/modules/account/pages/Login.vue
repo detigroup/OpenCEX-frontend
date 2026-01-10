@@ -424,16 +424,16 @@ button:disabled {
 
 .logIn__form__input_button {
   min-height: 54px;
-  background-color: var(--theme-primary-color);
+  background-color: #2563eb;
   border: none;
   font-weight: 700 !important;
-  color: #000;
+  color: #fff;
 }
 
 .logIn__form__input_button:hover,
 .logIn__form__input_button:active,
 .logIn__form__input_button:visited {
-  background-color: var(--theme-primary-color);
+  background-color: #1d4ed8;
 }
 
 /* style of input */
